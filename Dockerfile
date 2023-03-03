@@ -5,11 +5,13 @@ MAINTAINER Sebastian Schoenherr <sebastian.schoenherr@i-med.ac.at>, Lukas Forer 
 # Install R
 RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" | sudo tee -a /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B70731143DD9F856
 
 RUN sudo apt-get remove maven -y --force-yes
 RUN sudo add-apt-repository "deb http://ppa.launchpad.net/natecarlson/maven3/ubuntu precise main"
 
-RUN apt-get update && apt-get install -y --force-yes \
+RUN apt-get update -y && apt-get install -y --force-yes \
   r-base \
   maven3 \
  && rm -rf /var/lib/apt/lists/*
